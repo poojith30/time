@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #080A0D;
+    color: #F4F3EF;
+    overflow-x: hidden;
+  }
+
+  /* Refined typography defaults */
+  h1, h2, h3, .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+
+  /* Custom subtle dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080A0D;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1A202C;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4DA3FF;
+  }
+}
+
+@layer utilities {
+  .hairline-border {
+    border: 1px solid #1A202C;
+  }
+
+  .hairline-top {
+    border-top: 1px solid #1A202C;
+  }
+
+  .hairline-bottom {
+    border-bottom: 1px solid #1A202C;
+  }
+
+  /* Aspect ratio lock for watch photography */
+  .aspect-watch-portrait {
+    aspect-ratio: 4 / 5;
+  }
+
+  /* Subtle watch dial backgrounds and ambient lights */
+  .hero-radial-glow {
+    background: radial-gradient(circle at center, rgba(77, 163, 255, 0.14) 0%, rgba(29, 95, 167, 0.06) 42%, rgba(8, 10, 13, 0) 70%);
+  }
+
+  .card-ambient-glow {
+    background: radial-gradient(circle at center, rgba(77, 163, 255, 0.10) 0%, rgba(8, 10, 13, 0) 72%);
+  }
+
+  .subtle-blue-dot {
+    box-shadow: 0 0 8px rgba(77, 163, 255, 0.6);
+  }
+}
+
+/* Real-time continuous second hand animation */
+@keyframes continuousSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.watch-second-hand {
+  animation: continuousSweep 60s linear infinite;
+  transform-origin: center bottom;
+}
+
+.watch-dial-slow-spin {
+  animation: continuousSweep 240s linear infinite;
+  transform-origin: center center;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .watch-second-hand,
+  .watch-dial-slow-spin,
+  .animate-bounce,
+  .animate-pulse {
+    animation: none !important;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
